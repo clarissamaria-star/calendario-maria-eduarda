@@ -1,216 +1,218 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
-// Dados do dashboard
-const lotogreen_data = {
-  nome: '🟢 LOTOGREEN',
-  seguidores_atual: 150443,
-  investimento_total: 13852.65,
-  crescimento_total: 2962,
-  crescimento_direto: 2967,
-  crescimento_indireto: -5,
-  custo_por_seguidor: 4.68,
-  dias_dados: 62,
+interface DadosPeriodo {
+  data: string
+  periodo: string
+  investimento: number
+  seguidores: number
+  novos_seguidores: number
+  custo_por_seg: number
 }
 
-const br4bet_data = {
-  nome: '🔵 BR4BET',
-  seguidores_atual: 148.481,
-  investimento_total: 2200.00,
-  crescimento_total: 0,
-  crescimento_direto: 0,
-  crescimento_indireto: 0,
-  custo_por_seguidor: 0,
-  dias_dados: 31,
+interface DadosCasa {
+  [casa: string]: DadosPeriodo[]
 }
-
-// Projeção
-const dias_restantes = 212
-const investimento_diario = 300
-const crescimento_medio_diario_loto = 47.77
-const crescimento_medio_diario_br4 = 0
-
-const projecao_loto = {
-  seguidores_atual: lotogreen_data.seguidores_atual,
-  crescimento_esperado: crescimento_medio_diario_loto * dias_restantes,
-  seguidores_final: lotogreen_data.seguidores_atual + (crescimento_medio_diario_loto * dias_restantes),
-  investimento_total: investimento_diario * dias_restantes,
-  custo_por_seg: (investimento_diario * dias_restantes) / (crescimento_medio_diario_loto * dias_restantes),
-}
-
-const projecao_br4 = {
-  seguidores_atual: br4bet_data.seguidores_atual,
-  crescimento_esperado: crescimento_medio_diario_br4 * dias_restantes,
-  seguidores_final: br4bet_data.seguidores_atual + (crescimento_medio_diario_br4 * dias_restantes),
-  investimento_total: investimento_diario * dias_restantes,
-  custo_por_seg: 0,
-}
-
-// Dados para gráfico de tendência
-const tendencia_loto = Array.from({ length: 30 }, (_, i) => ({
-  dia: i + 1,
-  MLABS: 150443 + (47.77 * i),
-  BM: 150443 + (47.77 * i * 0.8),
-}))
 
 export default function Dashboard() {
+  const [dados, setDados] = useState<DadosCasa>({})
+  const [abaSelecionada, setAbaSelecionada] = useState<string>('Lotogreen')
+  const [carregando, setCarregando] = useState(true)
+
+  useEffect(() => {
+    fetch('/dados.json')
+      .then(res => res.json())
+      .then(data => {
+        setDados(data)
+        setAbaSelecionada(Object.keys(data)[0] || 'Lotogreen')
+        setCarregando(false)
+      })
+      .catch(err => {
+        console.error('Erro ao carregar dados:', err)
+        setCarregando(false)
+      })
+  }, [])
+
+  if (carregando) return <div className="container"><div className="card">Carregando dados...</div></div>
+
+  const casas = Object.keys(dados)
+  const dadosAtivos = dados[abaSelecionada] || []
+
+  // Calcula métricas
+  const totalInvestido = dadosAtivos.reduce((sum, d) => sum + d.investimento, 0)
+  const totalSeguidores = dadosAtivos.length > 0 ? dadosAtivos[dadosAtivos.length - 1].seguidores : 0
+  const totalNovosSeg = dadosAtivos.reduce((sum, d) => sum + d.novos_seguidores, 0)
+  const custoPorSegMedio = totalNovosSeg > 0 ? totalInvestido / totalNovosSeg : 0
+
   return (
     <div className="container">
       <div className="header">
-        <h1>📊 Dashboard Impulsionamento Instagram</h1>
-        <p>Análise MLABS vs BM • Sabiá Gaming • 02/06/2026</p>
+        <h1>📊 Dashboard de Tendências Instagram</h1>
+        <p>Análise de Crescimento por Período • Sabiá Gaming</p>
       </div>
 
-      {/* SEÇÃO 1: ANÁLISE ATUAL */}
-      <div className="section-title">📈 Análise Atual (Estado de Hoje)</div>
+      {/* ABAS */}
+      <div className="tabs">
+        {casas.map(casa => (
+          <button
+            key={casa}
+            className={`tab-button ${abaSelecionada === casa ? 'active' : ''}`}
+            onClick={() => setAbaSelecionada(casa)}
+          >
+            {casa === 'Lotogreen' ? '🟢 Lotogreen' : '🔵 BR4BET'}
+          </button>
+        ))}
+      </div>
 
+      {/* MÉTRICAS RESUMIDAS */}
       <div className="card">
-        <h2>{lotogreen_data.nome}</h2>
+        <h2>📈 Resumo • {abaSelecionada}</h2>
         <div className="metric-grid">
           <div className="metric">
-            <div className="metric-label">Seguidores Agora</div>
-            <div className="metric-value">{lotogreen_data.seguidores_atual.toLocaleString('pt-BR')}</div>
+            <div className="metric-label">Seguidores Atuais</div>
+            <div className="metric-value">{totalSeguidores.toLocaleString('pt-BR')}</div>
           </div>
           <div className="metric">
-            <div className="metric-label">Crescimento Total</div>
-            <div className="metric-value">+{lotogreen_data.crescimento_total.toLocaleString('pt-BR')}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Investimento</div>
-            <div className="metric-value">R$ {lotogreen_data.investimento_total.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Custo/Seguidor</div>
-            <div className="metric-value">R$ {lotogreen_data.custo_por_seguidor.toFixed(2)}</div>
-          </div>
-        </div>
-      </div>
-
-      {/* SEÇÃO 2: MLABS vs BM */}
-      <div className="section-title">🎯 Entendendo MLABS vs BM</div>
-
-      <div className="card">
-        <h2>A Diferença Explicada</h2>
-
-        <div className="comparison">
-          <div className="comparison-box">
-            <h3>📊 MLABS</h3>
-            <ul>
-              <li>Crescimento TOTAL do perfil</li>
-              <li>Inclui: Pago + Orgânico</li>
-              <li>Número REAL do Instagram</li>
-              <li>Essencial para decisões</li>
-            </ul>
-          </div>
-
-          <div className="comparison-box">
-            <h3>💰 BM (Meta Ads)</h3>
-            <ul>
-              <li>Apenas crescimento rastreado</li>
-              <li>Só clicou E seguiu</li>
-              <li>CONSERVADOR (subestima)</li>
-              <li>Prova do investimento</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="formula">
-          CRESCIMENTO TOTAL (MLABS) = CRESCIMENTO PAGO (BM) + CRESCIMENTO INDIRETO<br/>
-          <br/>
-          Exemplo: 100 = 60 + 40<br/>
-          <br/>
-          ✅ ROI Real: R$300 ÷ 100 = R$3/seg<br/>
-          ❌ Não é: R$300 ÷ 60 = R$5/seg
-        </div>
-
-        <h3>📌 Qual Usar?</h3>
-        <ul>
-          <li><strong>MLABS:</strong> Para relatório de performance REAL</li>
-          <li><strong>BM:</strong> Para validar que a campanha funcionou</li>
-          <li><strong>AMBOS:</strong> Para entender impacto COMPLETO</li>
-        </ul>
-      </div>
-
-      {/* SEÇÃO 3: PROJEÇÃO */}
-      <div className="section-title">🚀 Projeção até 31/12/2026</div>
-
-      <div className="card">
-        <h2>Cenário: R$ 300,00/dia de Investimento</h2>
-        <p>Período: 02/06 até 31/12/2026 ({dias_restantes} dias restantes)</p>
-
-        <h3>{lotogreen_data.nome}</h3>
-        <div className="metric-grid">
-          <div className="metric">
-            <div className="metric-label">Seguidores Hoje</div>
-            <div className="metric-value">{projecao_loto.seguidores_atual.toLocaleString('pt-BR')}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Crescimento Esperado</div>
-            <div className="metric-value">+{Math.round(projecao_loto.crescimento_esperado).toLocaleString('pt-BR')}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Em 31/12/2026</div>
-            <div className="metric-value">{Math.round(projecao_loto.seguidores_final).toLocaleString('pt-BR')}</div>
+            <div className="metric-label">Novos Seguidores</div>
+            <div className="metric-value">+{totalNovosSeg.toLocaleString('pt-BR')}</div>
           </div>
           <div className="metric">
             <div className="metric-label">Investimento Total</div>
-            <div className="metric-value">R$ {Math.round(projecao_loto.investimento_total).toLocaleString('pt-BR')}</div>
-          </div>
-        </div>
-
-        <h3 style={{ marginTop: '24px' }}>{br4bet_data.nome}</h3>
-        <div className="metric-grid">
-          <div className="metric">
-            <div className="metric-label">Seguidores Hoje</div>
-            <div className="metric-value">{projecao_br4.seguidores_atual.toLocaleString('pt-BR')}</div>
+            <div className="metric-value">R$ {totalInvestido.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</div>
           </div>
           <div className="metric">
-            <div className="metric-label">Crescimento Esperado</div>
-            <div className="metric-value">+{Math.round(projecao_br4.crescimento_esperado).toLocaleString('pt-BR')}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Em 31/12/2026</div>
-            <div className="metric-value">{Math.round(projecao_br4.seguidores_final).toLocaleString('pt-BR')}</div>
-          </div>
-          <div className="metric">
-            <div className="metric-label">Investimento Total</div>
-            <div className="metric-value">R$ {Math.round(projecao_br4.investimento_total).toLocaleString('pt-BR')}</div>
+            <div className="metric-label">Custo Médio/Seguidor</div>
+            <div className="metric-value">R$ {custoPorSegMedio.toFixed(2)}</div>
           </div>
         </div>
       </div>
 
-      {/* GRÁFICO DE TENDÊNCIA */}
+      {/* GRÁFICO DE SEGUIDORES */}
       <div className="card">
-        <h2>📉 Gráfico de Tendência - Lotogreen (Próximos 30 dias)</h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={tendencia_loto}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="dia" />
-            <YAxis />
-            <Tooltip />
+        <h2>📊 Crescimento de Seguidores por Período</h2>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={dadosAtivos} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+            <XAxis
+              dataKey="data"
+              angle={-45}
+              textAnchor="end"
+              height={80}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis tick={{ fontSize: 12 }} />
+            <Tooltip
+              formatter={(value) => value.toLocaleString('pt-BR')}
+              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e8eaed' }}
+            />
             <Legend />
-            <Line type="monotone" dataKey="MLABS" stroke="#667eea" strokeWidth={2} name="MLABS (Real)" />
-            <Line type="monotone" dataKey="BM" stroke="#764ba2" strokeWidth={2} name="BM (Conservador)" />
+            <Line
+              type="monotone"
+              dataKey="seguidores"
+              stroke="#1431fd"
+              dot={{ fill: '#1431fd', r: 4 }}
+              strokeWidth={2}
+              name="Seguidores"
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      {/* RESUMO EXECUTIVO */}
+      {/* GRÁFICO DE NOVOS SEGUIDORES */}
       <div className="card">
-        <h2>📋 Resumo Executivo para o Chefe</h2>
-        <ul style={{ lineHeight: '1.8' }}>
-          <li>✅ <strong>O problema estava resolvido:</strong> Você já estava preenchendo tudo certo</li>
-          <li>✅ <strong>A diferença é clara:</strong> MLABS = Real, BM = Conservador</li>
-          <li>✅ <strong>A fórmula funciona:</strong> Crescimento Total = Pago + Orgânico</li>
-          <li>✅ <strong>O investimento vale:</strong> Custo real é menor que parece (R$3-5 por seguidor)</li>
-          <li>✅ <strong>Tendência positiva:</strong> Lotogreen cresce consistentemente ~48 seg/dia</li>
-          <li>📊 <strong>Projeção:</strong> Com R$300/dia, Lotogreen chegará a ~160.600 seguidores em 31/12</li>
-        </ul>
+        <h2>🎯 Novos Seguidores por Dia</h2>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={dadosAtivos} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+            <XAxis
+              dataKey="data"
+              angle={-45}
+              textAnchor="end"
+              height={80}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis tick={{ fontSize: 12 }} />
+            <Tooltip
+              formatter={(value) => value.toLocaleString('pt-BR')}
+              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e8eaed' }}
+            />
+            <Legend />
+            <Bar
+              dataKey="novos_seguidores"
+              fill="#1431fd"
+              name="Novos Seguidores"
+              radius={[8, 8, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
 
-      <div style={{ height: '40px' }} />
+      {/* GRÁFICO DE CUSTO POR SEGUIDOR */}
+      <div className="card">
+        <h2>💰 Custo por Seguidor (Tendência)</h2>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={dadosAtivos} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+            <XAxis
+              dataKey="data"
+              angle={-45}
+              textAnchor="end"
+              height={80}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis
+              label={{ value: 'R$', angle: -90, position: 'insideLeft' }}
+              tick={{ fontSize: 12 }}
+            />
+            <Tooltip
+              formatter={(value) => ['R$ ' + (value as number).toFixed(2), 'Custo']}
+              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e8eaed' }}
+            />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="custo_por_seg"
+              stroke="#ff6b6b"
+              dot={{ fill: '#ff6b6b', r: 4 }}
+              strokeWidth={2}
+              name="Custo/Seguidor"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* INVESTIMENTO */}
+      <div className="card">
+        <h2>💵 Investimento Diário</h2>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={dadosAtivos} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e8eaed" />
+            <XAxis
+              dataKey="data"
+              angle={-45}
+              textAnchor="end"
+              height={80}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis
+              label={{ value: 'R$', angle: -90, position: 'insideLeft' }}
+              tick={{ fontSize: 12 }}
+            />
+            <Tooltip
+              formatter={(value) => ['R$ ' + (value as number).toFixed(2), 'Investimento']}
+              contentStyle={{ backgroundColor: '#fff', border: '1px solid #e8eaed' }}
+            />
+            <Bar
+              dataKey="investimento"
+              fill="#4ecdc4"
+              name="Investimento"
+              radius={[8, 8, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   )
 }

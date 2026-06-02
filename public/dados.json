@@ -1,0 +1,526 @@
+{
+  "Lotogreen": [
+    {
+      "data": "06/04/2026",
+      "periodo": "06/04/2026",
+      "investimento": 55.34,
+      "seguidores": 43608,
+      "novos_seguidores": 17,
+      "custo_por_seg": 3.26
+    },
+    {
+      "data": "07/04/2026",
+      "periodo": "07/04/2026",
+      "investimento": 53.51,
+      "seguidores": 43633,
+      "novos_seguidores": 25,
+      "custo_por_seg": 2.14
+    },
+    {
+      "data": "08/04/2026",
+      "periodo": "08/04/2026",
+      "investimento": 52.2,
+      "seguidores": 43672,
+      "novos_seguidores": 39,
+      "custo_por_seg": 1.34
+    },
+    {
+      "data": "09/04/2026",
+      "periodo": "09/04/2026",
+      "investimento": 512.92,
+      "seguidores": 43711,
+      "novos_seguidores": 39,
+      "custo_por_seg": 13.15
+    },
+    {
+      "data": "10/04/2026",
+      "periodo": "10/04/2026",
+      "investimento": 499.67,
+      "seguidores": 43731,
+      "novos_seguidores": 20,
+      "custo_por_seg": 24.98
+    },
+    {
+      "data": "11/04/2026",
+      "periodo": "11/04/2026",
+      "investimento": 514.99,
+      "seguidores": 43771,
+      "novos_seguidores": 40,
+      "custo_por_seg": 12.87
+    },
+    {
+      "data": "12/04/2026",
+      "periodo": "12/04/2026",
+      "investimento": 332.08,
+      "seguidores": 43799,
+      "novos_seguidores": 28,
+      "custo_por_seg": 11.86
+    },
+    {
+      "data": "13/04/2026",
+      "periodo": "13/04/2026",
+      "investimento": 298.29,
+      "seguidores": 43834,
+      "novos_seguidores": 35,
+      "custo_por_seg": 8.52
+    },
+    {
+      "data": "14/04/2026",
+      "periodo": "14/04/2026",
+      "investimento": 293.35,
+      "seguidores": 43869,
+      "novos_seguidores": 35,
+      "custo_por_seg": 8.38
+    },
+    {
+      "data": "15/04/2026",
+      "periodo": "15/04/2026",
+      "investimento": 286.17,
+      "seguidores": 43880,
+      "novos_seguidores": 11,
+      "custo_por_seg": 26.02
+    },
+    {
+      "data": "16/04/2026",
+      "periodo": "16/04/2026",
+      "investimento": 285.06,
+      "seguidores": 43903,
+      "novos_seguidores": 23,
+      "custo_por_seg": 12.39
+    },
+    {
+      "data": "17/04/2026",
+      "periodo": "17/04/2026",
+      "investimento": 302.47,
+      "seguidores": 43934,
+      "novos_seguidores": 31,
+      "custo_por_seg": 9.76
+    },
+    {
+      "data": "18/04/2026",
+      "periodo": "18/04/2026",
+      "investimento": 302.51,
+      "seguidores": 43951,
+      "novos_seguidores": 17,
+      "custo_por_seg": 17.79
+    },
+    {
+      "data": "19/04/2026",
+      "periodo": "19/04/2026",
+      "investimento": 328.5,
+      "seguidores": 43966,
+      "novos_seguidores": 15,
+      "custo_por_seg": 21.9
+    },
+    {
+      "data": "20/04/2026",
+      "periodo": "20/04/2026",
+      "investimento": 300.64,
+      "seguidores": 43995,
+      "novos_seguidores": 29,
+      "custo_por_seg": 10.37
+    },
+    {
+      "data": "21/04/2026",
+      "periodo": "21/04/2026",
+      "investimento": 295.19,
+      "seguidores": 44010,
+      "novos_seguidores": 15,
+      "custo_por_seg": 19.68
+    },
+    {
+      "data": "22/04/2026",
+      "periodo": "22/04/2026",
+      "investimento": 281.81,
+      "seguidores": 44048,
+      "novos_seguidores": 38,
+      "custo_por_seg": 7.42
+    },
+    {
+      "data": "23/04/2026",
+      "periodo": "23/04/2026",
+      "investimento": 300.37,
+      "seguidores": 44107,
+      "novos_seguidores": 59,
+      "custo_por_seg": 5.09
+    },
+    {
+      "data": "24/04/2026",
+      "periodo": "24/04/2026",
+      "investimento": 284.69,
+      "seguidores": 44178,
+      "novos_seguidores": 71,
+      "custo_por_seg": 4.01
+    },
+    {
+      "data": "25/04/2026",
+      "periodo": "25/04/2026",
+      "investimento": 267.9,
+      "seguidores": 44238,
+      "novos_seguidores": 60,
+      "custo_por_seg": 4.46
+    },
+    {
+      "data": "26/04/2026",
+      "periodo": "26/04/2026",
+      "investimento": 346.65,
+      "seguidores": 44362,
+      "novos_seguidores": 124,
+      "custo_por_seg": 2.8
+    },
+    {
+      "data": "27/04/2026",
+      "periodo": "27/04/2026",
+      "investimento": 327.02,
+      "seguidores": 44500,
+      "novos_seguidores": 138,
+      "custo_por_seg": 2.37
+    },
+    {
+      "data": "28/04/2026",
+      "periodo": "28/04/2026",
+      "investimento": 256.01,
+      "seguidores": 44594,
+      "novos_seguidores": 94,
+      "custo_por_seg": 2.72
+    },
+    {
+      "data": "29/04/2026",
+      "periodo": "29/04/2026",
+      "investimento": 265.79,
+      "seguidores": 44721,
+      "novos_seguidores": 127,
+      "custo_por_seg": 2.09
+    },
+    {
+      "data": "30/04/2026",
+      "periodo": "30/04/2026",
+      "investimento": 357.11,
+      "seguidores": 44811,
+      "novos_seguidores": 90,
+      "custo_por_seg": 3.97
+    },
+    {
+      "data": "01/05/2026",
+      "periodo": "01/05/2026",
+      "investimento": 288.0,
+      "seguidores": 44922,
+      "novos_seguidores": 111,
+      "custo_por_seg": 2.59
+    },
+    {
+      "data": "02/05/2026",
+      "periodo": "02/05/2026",
+      "investimento": 258.7,
+      "seguidores": 45028,
+      "novos_seguidores": 106,
+      "custo_por_seg": 2.44
+    },
+    {
+      "data": "03/05/2026",
+      "periodo": "03/05/2026",
+      "investimento": 351.27,
+      "seguidores": 45174,
+      "novos_seguidores": 146,
+      "custo_por_seg": 2.41
+    },
+    {
+      "data": "04/05/2026",
+      "periodo": "04/05/2026",
+      "investimento": 303.54,
+      "seguidores": 45314,
+      "novos_seguidores": 140,
+      "custo_por_seg": 2.17
+    },
+    {
+      "data": "05/05/2026",
+      "periodo": "05/05/2026",
+      "investimento": 277.98,
+      "seguidores": 45501,
+      "novos_seguidores": 187,
+      "custo_por_seg": 1.49
+    },
+    {
+      "data": "06/05/2026",
+      "periodo": "06/05/2026",
+      "investimento": 305.38,
+      "seguidores": 45667,
+      "novos_seguidores": 166,
+      "custo_por_seg": 1.84
+    },
+    {
+      "data": "07/05/2026",
+      "periodo": "07/05/2026",
+      "investimento": 302.09,
+      "seguidores": 45840,
+      "novos_seguidores": 173,
+      "custo_por_seg": 1.75
+    },
+    {
+      "data": "08/05/2026",
+      "periodo": "08/05/2026",
+      "investimento": 268.54,
+      "seguidores": 46027,
+      "novos_seguidores": 187,
+      "custo_por_seg": 1.44
+    },
+    {
+      "data": "09/05/2026",
+      "periodo": "09/05/2026",
+      "investimento": 287.42,
+      "seguidores": 46188,
+      "novos_seguidores": 161,
+      "custo_por_seg": 1.79
+    },
+    {
+      "data": "10/05/2026",
+      "periodo": "10/05/2026",
+      "investimento": 335.32,
+      "seguidores": 46367,
+      "novos_seguidores": 179,
+      "custo_por_seg": 1.87
+    },
+    {
+      "data": "11/05/2026",
+      "periodo": "11/05/2026",
+      "investimento": 299.16,
+      "seguidores": 46546,
+      "novos_seguidores": 179,
+      "custo_por_seg": 1.67
+    },
+    {
+      "data": "12/05/2026",
+      "periodo": "12/05/2026",
+      "investimento": 298.67,
+      "seguidores": 46710,
+      "novos_seguidores": 164,
+      "custo_por_seg": 1.82
+    },
+    {
+      "data": "13/05/2026",
+      "periodo": "13/05/2026",
+      "investimento": 312.43,
+      "seguidores": 46937,
+      "novos_seguidores": 227,
+      "custo_por_seg": 1.38
+    },
+    {
+      "data": "14/05/2026",
+      "periodo": "14/05/2026",
+      "investimento": 289.14,
+      "seguidores": 47086,
+      "novos_seguidores": 149,
+      "custo_por_seg": 1.94
+    },
+    {
+      "data": "28/05/2026",
+      "periodo": "28/05/2026",
+      "investimento": 525.0,
+      "seguidores": 47576,
+      "novos_seguidores": 97,
+      "custo_por_seg": 5.41
+    },
+    {
+      "data": "29/05/2026",
+      "periodo": "29/05/2026",
+      "investimento": 517.99,
+      "seguidores": 47907,
+      "novos_seguidores": 331,
+      "custo_por_seg": 1.56
+    },
+    {
+      "data": "30/05/2026",
+      "periodo": "30/05/2026",
+      "investimento": 475.44,
+      "seguidores": 48238,
+      "novos_seguidores": 331,
+      "custo_por_seg": 1.44
+    },
+    {
+      "data": "31/05/2026",
+      "periodo": "31/05/2026",
+      "investimento": 389.39,
+      "seguidores": 48663,
+      "novos_seguidores": 425,
+      "custo_por_seg": 0.92
+    },
+    {
+      "data": "01/06/2026",
+      "periodo": "01/06/2026",
+      "investimento": 323.04,
+      "seguidores": 49061,
+      "novos_seguidores": 398,
+      "custo_por_seg": 0.81
+    }
+  ],
+  "BR4BET": [
+    {
+      "data": "12/05/2026",
+      "periodo": "12/05/2026",
+      "investimento": 200.78,
+      "seguidores": 148237,
+      "novos_seguidores": 94,
+      "custo_por_seg": 2.14
+    },
+    {
+      "data": "13/05/2026",
+      "periodo": "13/05/2026",
+      "investimento": 249.01,
+      "seguidores": 148395,
+      "novos_seguidores": 158,
+      "custo_por_seg": 1.58
+    },
+    {
+      "data": "14/05/2026",
+      "periodo": "14/05/2026",
+      "investimento": 276.86,
+      "seguidores": 148450,
+      "novos_seguidores": 55,
+      "custo_por_seg": 5.03
+    },
+    {
+      "data": "15/05/2026",
+      "periodo": "15/05/2026",
+      "investimento": 305.98,
+      "seguidores": 148531,
+      "novos_seguidores": 81,
+      "custo_por_seg": 3.78
+    },
+    {
+      "data": "16/05/2026",
+      "periodo": "16/05/2026",
+      "investimento": 289.97,
+      "seguidores": 148616,
+      "novos_seguidores": 85,
+      "custo_por_seg": 3.41
+    },
+    {
+      "data": "17/05/2026",
+      "periodo": "17/05/2026",
+      "investimento": 373.96,
+      "seguidores": 148708,
+      "novos_seguidores": 92,
+      "custo_por_seg": 4.06
+    },
+    {
+      "data": "18/05/2026",
+      "periodo": "18/05/2026",
+      "investimento": 302.74,
+      "seguidores": 148756,
+      "novos_seguidores": 48,
+      "custo_por_seg": 6.31
+    },
+    {
+      "data": "19/05/2026",
+      "periodo": "19/05/2026",
+      "investimento": 277.92,
+      "seguidores": 148809,
+      "novos_seguidores": 53,
+      "custo_por_seg": 5.24
+    },
+    {
+      "data": "20/05/2026",
+      "periodo": "20/05/2026",
+      "investimento": 266.14,
+      "seguidores": 149542,
+      "novos_seguidores": 733,
+      "custo_por_seg": 0.36
+    },
+    {
+      "data": "21/05/2026",
+      "periodo": "21/05/2026",
+      "investimento": 272.93,
+      "seguidores": 149593,
+      "novos_seguidores": 51,
+      "custo_por_seg": 5.35
+    },
+    {
+      "data": "22/05/2026",
+      "periodo": "22/05/2026",
+      "investimento": 299.95,
+      "seguidores": 149645,
+      "novos_seguidores": 52,
+      "custo_por_seg": 5.77
+    },
+    {
+      "data": "23/05/2026",
+      "periodo": "23/05/2026",
+      "investimento": 303.72,
+      "seguidores": 149690,
+      "novos_seguidores": 45,
+      "custo_por_seg": 6.75
+    },
+    {
+      "data": "24/05/2026",
+      "periodo": "24/05/2026",
+      "investimento": 339.78,
+      "seguidores": 149773,
+      "novos_seguidores": 83,
+      "custo_por_seg": 4.09
+    },
+    {
+      "data": "25/05/2026",
+      "periodo": "25/05/2026",
+      "investimento": 299.76,
+      "seguidores": 149809,
+      "novos_seguidores": 36,
+      "custo_por_seg": 8.33
+    },
+    {
+      "data": "26/05/2026",
+      "periodo": "26/05/2026",
+      "investimento": 281.19,
+      "seguidores": 149835,
+      "novos_seguidores": 26,
+      "custo_por_seg": 10.81
+    },
+    {
+      "data": "27/05/2026",
+      "periodo": "27/05/2026",
+      "investimento": 291.24,
+      "seguidores": 149847,
+      "novos_seguidores": 12,
+      "custo_por_seg": 24.27
+    },
+    {
+      "data": "28/05/2026",
+      "periodo": "28/05/2026",
+      "investimento": 319.88,
+      "seguidores": 149949,
+      "novos_seguidores": 102,
+      "custo_por_seg": 3.14
+    },
+    {
+      "data": "29/05/2026",
+      "periodo": "29/05/2026",
+      "investimento": 297.6,
+      "seguidores": 150241,
+      "novos_seguidores": 292,
+      "custo_por_seg": 1.02
+    },
+    {
+      "data": "30/05/2026",
+      "periodo": "30/05/2026",
+      "investimento": 270.55,
+      "seguidores": 150322,
+      "novos_seguidores": 81,
+      "custo_por_seg": 3.34
+    },
+    {
+      "data": "31/05/2026",
+      "periodo": "31/05/2026",
+      "investimento": 362.41,
+      "seguidores": 150388,
+      "novos_seguidores": 66,
+      "custo_por_seg": 5.49
+    },
+    {
+      "data": "01/06/2026",
+      "periodo": "01/06/2026",
+      "investimento": 226.76,
+      "seguidores": 150443,
+      "novos_seguidores": 55,
+      "custo_por_seg": 4.12
+    }
+  ]
+}
