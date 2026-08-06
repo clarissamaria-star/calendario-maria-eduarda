@@ -12,7 +12,7 @@
     --accent-br-soft: #2f6b5417;
     --accent-intl: #3c5a8a;
     --accent-podcast: #7a4b1f;
-    --status-warn: #96590f;
+    --status-danger: #b3261e;
 
     --pillar-meds: #a2472a;
     --pillar-reagindo: #6b4fa0;
@@ -30,7 +30,7 @@
       --paper: #14170f; --paper-raised: #1c2117; --paper-sunken: #0f1209;
       --ink: #edefe4; --ink-muted: #a7ac9c; --ink-faint: #6d7466; --line: #313627;
       --accent-br: #62b190; --accent-br-soft: #62b19022; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
-      --status-warn: #dba653;
+      --status-danger: #f0806a;
       --pillar-meds: #d3866d; --pillar-reagindo: #a68ddb; --pillar-mito: #5cbcb2;
       --pillar-educativo: #8fadde; --pillar-autoridade: #d4b45c;
     }
@@ -39,7 +39,7 @@
     --paper: #14170f; --paper-raised: #1c2117; --paper-sunken: #0f1209;
     --ink: #edefe4; --ink-muted: #a7ac9c; --ink-faint: #6d7466; --line: #313627;
     --accent-br: #62b190; --accent-br-soft: #62b19022; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
-    --status-warn: #dba653;
+    --status-danger: #f0806a;
     --pillar-meds: #d3866d; --pillar-reagindo: #a68ddb; --pillar-mito: #5cbcb2;
     --pillar-educativo: #8fadde; --pillar-autoridade: #d4b45c;
   }
@@ -47,7 +47,7 @@
     --paper: #eef0e9; --paper-raised: #f8f9f4; --paper-sunken: #e4e7dc;
     --ink: #202821; --ink-muted: #5b6259; --ink-faint: #8b9186; --line: #d9dbcf;
     --accent-br: #2f6b54; --accent-br-soft: #2f6b5417; --accent-intl: #3c5a8a; --accent-podcast: #7a4b1f;
-    --status-warn: #96590f;
+    --status-danger: #b3261e;
     --pillar-meds: #a2472a; --pillar-reagindo: #6b4fa0; --pillar-mito: #1f7a73;
     --pillar-educativo: #4a6fa5; --pillar-autoridade: #8a6d1f;
   }
@@ -94,13 +94,21 @@
   .sourcing-note strong { color: var(--ink); }
   .sourcing-note .terms { font-family: var(--font-mono); font-size: 0.76rem; color: var(--pillar-reagindo); }
 
-  /* ---------- Risk alert ---------- */
-  section.risk-alert { background: var(--paper-raised); border: 1px solid var(--line); border-left: 3px solid var(--status-warn); padding: 20px 22px 22px; margin-bottom: 36px; }
-  .risk-alert h2 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--status-warn); margin: 0 0 6px; }
-  .risk-intro { font-size: 0.86rem; color: var(--ink-muted); margin: 0 0 14px; max-width: 70ch; }
-  .risk-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; }
-  .risk-list li { font-size: 0.87rem; color: var(--ink); line-height: 1.5; }
-  .risk-list strong { color: var(--status-warn); font-weight: 600; }
+  /* ---------- Risk trigger + modal ---------- */
+  .risk-trigger {
+    display: block; width: 100%; margin-top: 28px; background: var(--status-danger); color: #fff;
+    border: none; padding: 18px 20px; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; text-align: center; cursor: pointer;
+    transition: filter 0.12s ease;
+  }
+  .risk-trigger:hover, .risk-trigger:focus-visible { filter: brightness(1.1); outline: none; }
+
+  .risk-panel { border-left: 3px solid var(--status-danger); }
+  .risk-title { font-family: var(--font-display); font-size: 1.25rem; color: var(--status-danger); text-wrap: balance; padding-right: 12px; }
+  .risk-intro { font-size: 0.86rem; color: var(--ink-muted); margin: 0 0 16px; max-width: 70ch; }
+  .risk-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .risk-list li { font-size: 0.88rem; color: var(--ink); line-height: 1.5; }
+  .risk-list strong { color: var(--status-danger); font-weight: 600; }
 
   /* ---------- Tabs ---------- */
   .tab-nav { display: flex; gap: 4px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
@@ -296,19 +304,6 @@
     <strong>Sobre os posts "Reagindo" (toda terça e sexta):</strong> conteúdo de reação depende do que está viralizando naquela semana: por isso não há vídeo-alvo fixo definido com um mês de antecedência. Na semana da gravação, procure por: <span class="terms">"o que como no dia" + influencer fitness BR</span>, <span class="terms">dieta viral tiktok brasil</span>, <span class="terms">outro podcast de nutrição/saúde BR</span>, <span class="terms">suplemento/detox anunciado nas redes</span>. As referências mostradas em cada card são o <em>formato</em>, não o alvo da reação daquele dia.
   </div>
 
-  <section class="risk-alert">
-    <h2>Temas de risco, evitar</h2>
-    <p class="risk-intro">Levantamento de casos reais de médicos e nutricionistas que geraram crise/cancelamento nas redes, cruzado com a Resolução CFM nº 2.336/2023 (publicidade médica). Vale revisar antes de gravar qualquer post dos pilares Medicamentos, Reagindo e Bastidores.</p>
-    <ol class="risk-list">
-      <li><strong>Antes/depois sem as 4 condições do CFM.</strong> A Resolução 2.336/2023 permite antes/depois, mas só com caráter educativo, sem sensacionalismo, com autorização expressa do paciente e mantendo o anonimato dele (mesmo autorizado). Um post de antes/depois fora desse enquadramento é infração ética, não só risco de crítica na internet.</li>
-      <li><strong>Comparação que sugere corpo "certo" e corpo "errado".</strong> Caso real: a influenciadora Alexandra Gurgel apagou um post de antes/depois em 2021 depois de críticas de que o formato dava a entender que o corpo gordo era "o errado". Evitar qualquer legenda ou edição que sugira julgamento sobre o corpo anterior.</li>
-      <li><strong>Prometer velocidade de emagrecimento irreal.</strong> Caso real: Maíra Cardi foi chamada de "terrorismo nutricional" por prometer 6 a 16kg por mês, muito acima do ritmo saudável (2 a 5kg). Nunca associar o nome da Dra. Maria Eduarda a números de peso por semana/mês, nem nos vídeos nem nas legendas.</li>
-      <li><strong>Reagindo que vira crítica a corpo ou pessoa específica.</strong> Caso real: a nutricionista denunciada por Thais Carla por gordofobia. Nos posts de "Reagindo", o alvo tem que ser sempre a informação/alegação (é verdade? tem risco?), nunca o corpo, a escolha ou a aparência de quem postou o conteúdo original.</li>
-      <li><strong>Ozempic/canetas emagrecedoras tratadas como produto de prateleira.</strong> Uso estético off-label é hoje pauta de saúde pública no Brasil (Anvisa já exige receita em duas vias; alta demanda estética contribuiu pra desabastecimento de pacientes diabéticos que dependem do remédio). Qualquer post sobre o tema precisa deixar claro: uso é sob prescrição e acompanhamento médico, nunca por conta própria, e mencionar o risco de desabastecimento quando fizer sentido no roteiro.</li>
-      <li><strong>Bastidores de consultório sem cuidado com identidade do paciente.</strong> Mesmo com autorização, o CFM exige manter o anonimato do paciente (rosto, nome, dados que permitam identificação). Nos posts de "Bastidores" que mostram consulta, sempre confirmar enquadramento de câmera e edição antes de publicar.</li>
-    </ol>
-  </section>
-
   <section class="calendar">
     <h2>Agosto 2026</h2>
     <div class="cal-weekdays">
@@ -317,6 +312,28 @@
     <div class="cal-grid" id="calGrid"></div>
   </section>
 
+  <button class="risk-trigger" id="riskTrigger">O que temos que evitar para não ser cancelado</button>
+
+  </div>
+
+  <div class="modal-backdrop" id="riskBackdrop">
+    <div class="modal-panel risk-panel" role="dialog" aria-modal="true" aria-labelledby="riskModalTitle">
+      <div class="modal-head">
+        <p class="mh-daynum risk-title" id="riskModalTitle">O que temos que evitar para não ser cancelado</p>
+        <button class="modal-close" id="riskClose" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="risk-intro">Levantamento de casos reais de médicos e nutricionistas que geraram crise/cancelamento nas redes, cruzado com a Resolução CFM nº 2.336/2023 (publicidade médica). Vale revisar antes de gravar qualquer post dos pilares Medicamentos, Reagindo e Bastidores.</p>
+        <ol class="risk-list">
+          <li><strong>Antes/depois sem as 4 condições do CFM.</strong> A Resolução 2.336/2023 permite antes/depois, mas só com caráter educativo, sem sensacionalismo, com autorização expressa do paciente e mantendo o anonimato dele (mesmo autorizado). Um post de antes/depois fora desse enquadramento é infração ética, não só risco de crítica na internet.</li>
+          <li><strong>Comparação que sugere corpo "certo" e corpo "errado".</strong> Caso real: a influenciadora Alexandra Gurgel apagou um post de antes/depois em 2021 depois de críticas de que o formato dava a entender que o corpo gordo era "o errado". Evitar qualquer legenda ou edição que sugira julgamento sobre o corpo anterior.</li>
+          <li><strong>Prometer velocidade de emagrecimento irreal.</strong> Caso real: Maíra Cardi foi chamada de "terrorismo nutricional" por prometer 6 a 16kg por mês, muito acima do ritmo saudável (2 a 5kg). Nunca associar o nome da Dra. Maria Eduarda a números de peso por semana/mês, nem nos vídeos nem nas legendas.</li>
+          <li><strong>Reagindo que vira crítica a corpo ou pessoa específica.</strong> Caso real: a nutricionista denunciada por Thais Carla por gordofobia. Nos posts de "Reagindo", o alvo tem que ser sempre a informação/alegação (é verdade? tem risco?), nunca o corpo, a escolha ou a aparência de quem postou o conteúdo original.</li>
+          <li><strong>Ozempic/canetas emagrecedoras tratadas como produto de prateleira.</strong> Uso estético off-label é hoje pauta de saúde pública no Brasil (Anvisa já exige receita em duas vias; alta demanda estética contribuiu pra desabastecimento de pacientes diabéticos que dependem do remédio). Qualquer post sobre o tema precisa deixar claro: uso é sob prescrição e acompanhamento médico, nunca por conta própria, e mencionar o risco de desabastecimento quando fizer sentido no roteiro.</li>
+          <li><strong>Bastidores de consultório sem cuidado com identidade do paciente.</strong> Mesmo com autorização, o CFM exige manter o anonimato do paciente (rosto, nome, dados que permitam identificação). Nos posts de "Bastidores" que mostram consulta, sempre confirmar enquadramento de câmera e edição antes de publicar.</li>
+        </ol>
+      </div>
+    </div>
   </div>
 
   <div id="viewDashboard" class="view" style="display:none">
@@ -1268,7 +1285,19 @@ const CALENDAR_DATA = [
 
   document.getElementById("modalClose").addEventListener("click", closeModal);
   backdrop.addEventListener("click", (e) => { if (e.target === backdrop) closeModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  const riskBackdrop = document.getElementById("riskBackdrop");
+  const riskTrigger = document.getElementById("riskTrigger");
+  const riskClose = document.getElementById("riskClose");
+  function openRiskModal() { riskBackdrop.classList.add("open"); riskClose.focus(); }
+  function closeRiskModal() { riskBackdrop.classList.remove("open"); }
+  riskTrigger.addEventListener("click", openRiskModal);
+  riskClose.addEventListener("click", closeRiskModal);
+  riskBackdrop.addEventListener("click", (e) => { if (e.target === riskBackdrop) closeRiskModal(); });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { closeModal(); closeRiskModal(); }
+  });
 
   pubSwitch.addEventListener("click", () => {
     if (!currentModalDate) return;
