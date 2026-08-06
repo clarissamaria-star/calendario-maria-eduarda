@@ -90,6 +90,25 @@
   .sourcing-note strong { color: var(--ink); }
   .sourcing-note .terms { font-family: var(--font-mono); font-size: 0.76rem; color: var(--pillar-reagindo); }
 
+  /* ---------- Tabs ---------- */
+  .tab-nav { display: flex; gap: 4px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
+  .tab-btn { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; background: none; border: none; border-bottom: 2px solid transparent; color: var(--ink-faint); padding: 10px 4px; margin-right: 26px; cursor: pointer; }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--accent-br); }
+
+  /* ---------- Integrações ---------- */
+  .integ-intro { font-size: 0.92rem; color: var(--ink-muted); max-width: 68ch; margin: 0 0 28px; line-height: 1.6; }
+  .integ-cards { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 28px; }
+  .integ-card { background: var(--paper-raised); padding: 20px 22px; }
+  .integ-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .integ-name { font-family: var(--font-display); font-size: 1.1rem; }
+  .integ-status { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 9px; border-radius: 3px; border: 1px solid var(--line); white-space: nowrap; }
+  .integ-status.connected { color: var(--accent-br); border-color: var(--accent-br); }
+  .integ-status.pending { color: var(--ink-faint); }
+  .integ-desc { font-size: 0.86rem; color: var(--ink-muted); margin: 0; max-width: 62ch; }
+  .integ-reqs { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+  .integ-reqs li { font-size: 0.82rem; color: var(--ink); }
+
   /* ---------- Calendar grid ---------- */
   section.calendar { margin-bottom: 40px; }
   .calendar h2 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin: 0 0 14px; }
@@ -201,6 +220,13 @@
     </dl>
   </header>
 
+  <nav class="tab-nav">
+    <button class="tab-btn active" id="tabCalendario" data-view="viewCalendario">Calendário</button>
+    <button class="tab-btn" id="tabIntegracoes" data-view="viewIntegracoes">Integrações</button>
+  </nav>
+
+  <div id="viewCalendario" class="view">
+
   <section class="findings">
     <h2>O que os dados mostram</h2>
     <p class="findings-note">Extraído de 1.400+ vídeos, com Channel ID verificado, dos canais Dra. Andrea Pereira, Dr Juliano Teles, Doctor Mike e Abbey Sharp.</p>
@@ -244,6 +270,37 @@
     </div>
     <div class="cal-grid" id="calGrid"></div>
   </section>
+
+  </div>
+
+  <div id="viewIntegracoes" class="view" style="display:none">
+    <p class="integ-intro">Sim, dá pra chegar nesse nível — o Instagram (via Meta Graph API) expõe métricas reais por post: alcance, curtidas, comentários, salvamentos e compartilhamentos, atualizadas quase em tempo real. Só que isso não roda direto neste site estático: um token de acesso não pode ficar exposto no código público de uma página, então a conexão de verdade só acontece junto com o backend/banco de dados que vocês vão migrar (ver nota no rodapé da aba Calendário). Esta aba é o espaço já reservado pra quando isso acontecer — cada integração abaixo mostra status e o que falta para ativar.</p>
+
+    <div class="integ-cards">
+      <div class="integ-card">
+        <div class="integ-head">
+          <span class="integ-name">Instagram (Meta Graph API)</span>
+          <span class="integ-status pending">Planejado — não conectado</span>
+        </div>
+        <p class="integ-desc">Traria, por post: alcance, impressões, curtidas, comentários, salvamentos e compartilhamentos — preenchendo automaticamente o campo <code>metricas</code> já reservado em cada dia do calendário, e permitindo montar o dashboard de performance pra apresentar pra Dra. Maria Eduarda.</p>
+        <p class="m-label" style="margin:14px 0 6px">O que falta para ativar</p>
+        <ol class="integ-reqs">
+          <li>Conta do Instagram da Dra. Maria Eduarda precisa ser Business ou Criador de Conteúdo</li>
+          <li>Vinculada a uma Página do Facebook (exigência da Meta, mesmo sem usar o Facebook de fato)</li>
+          <li>Um app registrado no Meta for Developers, com permissão <code>instagram_manage_insights</code></li>
+          <li>Backend próprio pra guardar o token de acesso com segurança e renová-lo periodicamente</li>
+        </ol>
+      </div>
+
+      <div class="integ-card">
+        <div class="integ-head">
+          <span class="integ-name">Supermetrics (YouTube Public Data)</span>
+          <span class="integ-status connected">Já conectado</span>
+        </div>
+        <p class="integ-desc">É a fonte usada hoje para a pesquisa de benchmark (canais de referência BR e internacionais) — tanto neste calendário quanto na rotina semanal automática. Ainda não está puxando dados do canal da própria Dra. Maria Eduarda, porque o canal dela/Fábio Izaias Team ainda não foi localizado (ver nota no rodapé da aba Calendário).</p>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -919,6 +976,16 @@ const CALENDAR_DATA = [
 ];
 
 (function () {
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      document.querySelectorAll(".view").forEach(v => v.style.display = "none");
+      document.getElementById(btn.dataset.view).style.display = "";
+    });
+  });
+
   const WEEKDAY_COLS = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];
   const dataByDate = {};
   CALENDAR_DATA.forEach(d => dataByDate[d.date] = d);
