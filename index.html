@@ -9,6 +9,7 @@
     --ink-faint: #8b9186;
     --line: #d9dbcf;
     --accent-br: #2f6b54;
+    --accent-br-soft: #2f6b5417;
     --accent-intl: #3c5a8a;
     --accent-podcast: #7a4b1f;
 
@@ -27,7 +28,7 @@
     :root {
       --paper: #14170f; --paper-raised: #1c2117; --paper-sunken: #0f1209;
       --ink: #edefe4; --ink-muted: #a7ac9c; --ink-faint: #6d7466; --line: #313627;
-      --accent-br: #62b190; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
+      --accent-br: #62b190; --accent-br-soft: #62b19022; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
       --pillar-meds: #d3866d; --pillar-reagindo: #a68ddb; --pillar-mito: #5cbcb2;
       --pillar-educativo: #8fadde; --pillar-autoridade: #d4b45c;
     }
@@ -35,14 +36,14 @@
   :root[data-theme="dark"] {
     --paper: #14170f; --paper-raised: #1c2117; --paper-sunken: #0f1209;
     --ink: #edefe4; --ink-muted: #a7ac9c; --ink-faint: #6d7466; --line: #313627;
-    --accent-br: #62b190; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
+    --accent-br: #62b190; --accent-br-soft: #62b19022; --accent-intl: #86a4de; --accent-podcast: #d99a5c;
     --pillar-meds: #d3866d; --pillar-reagindo: #a68ddb; --pillar-mito: #5cbcb2;
     --pillar-educativo: #8fadde; --pillar-autoridade: #d4b45c;
   }
   :root[data-theme="light"] {
     --paper: #eef0e9; --paper-raised: #f8f9f4; --paper-sunken: #e4e7dc;
     --ink: #202821; --ink-muted: #5b6259; --ink-faint: #8b9186; --line: #d9dbcf;
-    --accent-br: #2f6b54; --accent-intl: #3c5a8a; --accent-podcast: #7a4b1f;
+    --accent-br: #2f6b54; --accent-br-soft: #2f6b5417; --accent-intl: #3c5a8a; --accent-podcast: #7a4b1f;
     --pillar-meds: #a2472a; --pillar-reagindo: #6b4fa0; --pillar-mito: #1f7a73;
     --pillar-educativo: #4a6fa5; --pillar-autoridade: #8a6d1f;
   }
@@ -95,10 +96,18 @@
   .cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-bottom: none; }
   .cal-weekdays span { background: var(--paper-sunken); padding: 8px 6px; font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); text-align: center; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); overflow-x: auto; }
-  .cal-cell { background: var(--paper-raised); min-height: 92px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .cal-cell { background: var(--paper-raised); min-height: 92px; padding: 8px; display: flex; flex-direction: column; gap: 5px; position: relative; }
   .cal-cell.empty { background: var(--paper-sunken); opacity: 0.45; }
   .cal-cell.filled { cursor: pointer; border-left: 3px solid var(--pillar); transition: background 0.12s ease; }
   .cal-cell.filled:hover, .cal-cell.filled:focus-visible { background: var(--paper-sunken); outline: none; }
+  .cal-cell.is-published { background: var(--accent-br-soft); }
+
+  .cal-status-dot {
+    position: absolute; top: 7px; right: 7px; width: 11px; height: 11px; border-radius: 50%;
+    border: 1.5px solid var(--ink-faint); background: transparent; padding: 0; cursor: pointer; z-index: 1;
+  }
+  .cal-status-dot:hover { border-color: var(--accent-br); }
+  .cal-status-dot.published { background: var(--accent-br); border-color: var(--accent-br); }
   .cal-daynum { font-family: var(--font-mono); font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--ink-faint); }
   .cal-cell.filled .cal-daynum { color: var(--ink); font-weight: 600; }
   .cal-pillar { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--pillar); }
@@ -144,6 +153,25 @@
   .m-ref-row .channel { color: var(--ink-muted); font-size: 0.85rem; }
   .m-ref-row .views { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.82rem; grid-column: 3; }
   .m-noref { font-size: 0.8rem; color: var(--ink-faint); font-style: italic; margin: 0; }
+
+  /* ---------- Publish toggle ---------- */
+  .pub-row { display: flex; align-items: center; gap: 10px; }
+  .pub-switch { position: relative; width: 38px; height: 20px; border-radius: 10px; background: var(--paper-sunken); border: 1px solid var(--line); cursor: pointer; flex: none; padding: 0; transition: background 0.15s ease, border-color 0.15s ease; }
+  .pub-switch .knob { position: absolute; top: 1px; left: 1px; width: 16px; height: 16px; border-radius: 50%; background: var(--ink-faint); transition: transform 0.15s ease, background 0.15s ease; }
+  .pub-switch.on { background: var(--accent-br-soft); border-color: var(--accent-br); }
+  .pub-switch.on .knob { transform: translateX(18px); background: var(--accent-br); }
+  .pub-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); }
+  .pub-label.on { color: var(--accent-br); }
+
+  /* ---------- Material pronto ---------- */
+  .material-field { display: flex; gap: 8px; margin-bottom: 6px; }
+  .material-field input { flex: 1; min-width: 0; font-family: var(--font-mono); font-size: 0.82rem; background: var(--paper-sunken); border: 1px solid var(--line); color: var(--ink); padding: 8px 10px; }
+  .material-field input::placeholder { color: var(--ink-faint); }
+  .material-save { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; background: none; border: 1px solid var(--line); color: var(--ink-muted); padding: 0 12px; cursor: pointer; flex: none; }
+  .material-save:hover { color: var(--ink); border-color: var(--ink-faint); }
+  .material-open { font-size: 0.82rem; margin: 0; }
+  .material-open a { color: var(--accent-br); text-decoration-color: var(--accent-br); text-underline-offset: 2px; }
+  .material-hint { font-size: 0.76rem; color: var(--ink-faint); margin: 0; }
   .m-podcast { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); }
   .m-podcast .m-podcast-title { font-family: var(--font-display); font-size: 1rem; margin: 0 0 8px; color: var(--accent-podcast); }
 
@@ -198,6 +226,11 @@
       <span class="chip"><span class="src-mark" style="background:var(--accent-intl)">IN</span>Internacional</span>
       <span class="chip"><span class="src-mark" style="background:var(--accent-podcast)">PC</span>Podcast da semana</span>
     </div>
+    <div class="legend-group">
+      <span class="legend-label">Status</span>
+      <span class="chip"><span class="dot" style="background:transparent;border:1.5px solid var(--ink-faint)"></span>Não publicado</span>
+      <span class="chip"><span class="dot" style="background:var(--accent-br)"></span>Publicado — clique na bolinha do dia (ou no toggle dentro do card) para marcar</span>
+    </div>
   </div>
 
   <div class="sourcing-note">
@@ -218,6 +251,10 @@
         <div>
           <p class="mh-date" id="modalDateLabel"></p>
           <p class="mh-daynum" id="modalDayNum"></p>
+        </div>
+        <div class="pub-row">
+          <span class="pub-label" id="pubLabel">Não publicado</span>
+          <button class="pub-switch" id="pubSwitch" role="switch" aria-checked="false" aria-label="Marcar como publicado"><span class="knob"></span></button>
         </div>
         <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
       </div>
@@ -242,6 +279,14 @@
         <p class="m-label">CTA</p>
         <p class="m-cta" id="modalCta"></p>
 
+        <p class="m-label">Material pronto para postar</p>
+        <div class="material-field">
+          <input type="url" id="materialInput" placeholder="Cole aqui o link do Drive/pasta com o vídeo pronto" />
+          <button class="material-save" id="materialSaveBtn">Salvar</button>
+        </div>
+        <p class="material-open" id="materialOpenWrap" style="display:none"><a id="materialOpenLink" href="#" target="_blank" rel="noopener">Abrir material ↗</a></p>
+        <p class="material-hint">Fica salvo neste navegador — se outra pessoa acessar de outro computador, esse link não aparece pra ela ainda (ver nota no rodapé).</p>
+
         <p class="m-label">Vídeos de referência</p>
         <div class="m-refs" id="modalRefs"></div>
 
@@ -261,6 +306,7 @@
       <li><strong>Vídeos "Reagindo" (toda terça e sexta).</strong> Os links mostram vídeos de <em>formato</em> equivalente — não são o alvo da reação, que deve ser escolhido na semana da gravação (ver caixa de sourcing acima).</li>
       <li><strong>Dias "Mito ou verdade" de 19/08 e 26/08.</strong> Roteiro genérico pronto, mas ainda sem referência de benchmark real levantada para o tema específico daquela semana — precisa ser confirmado antes da gravação (não inventamos números).</li>
       <li><strong>Pensado para virar dashboard.</strong> Cada dia deste calendário já guarda um campo reservado (<code>metricas</code>) vazio no código-fonte, preparado para receber dados reais de performance (views, curtidas, alcance) assim que o Instagram da Dra. Maria Eduarda for conectado via API. Isso permite, no futuro, montar um painel comparando o que foi planejado aqui com o que realmente performou — sem precisar reconstruir o calendário do zero.</li>
+      <li><strong>Status de publicação e link do material ficam salvos só neste navegador (localStorage), não num banco compartilhado.</strong> Isso quer dizer que se a Clarissa marcar um dia como publicado no computador dela, quem abrir o link em outro computador/celular não vai ver essa marcação — cada pessoa vê o estado salvo no próprio navegador. Funciona bem para uso individual agora; se o time precisar ver o mesmo status compartilhado entre várias pessoas, o próximo passo é ligar isso a um banco de dados real (o mesmo lugar que receberia as métricas do Instagram no item acima).</li>
       <li><strong>Metodologia.</strong> Dados extraídos via Supermetrics (YouTube Public Data) com Channel ID verificado. Barras de comparação usam escala logarítmica — leitura relativa de alcance, não proporção literal entre os números.</li>
     </ol>
     <p class="colophon">Elevate · calendário gerado a partir de dados públicos do YouTube · agosto 2026</p>
@@ -877,12 +923,67 @@ const CALENDAR_DATA = [
   const dataByDate = {};
   CALENDAR_DATA.forEach(d => dataByDate[d.date] = d);
 
+  /*
+    Status de publicação e link do material ficam salvos no localStorage
+    deste navegador (chave abaixo). Não é um banco compartilhado ainda —
+    se a Clarissa marcar como publicado no computador dela, quem acessa
+    de outro computador não vê essa marcação. Isso é o mesmo tipo de
+    limitação anotado no rodapé sobre `metricas`: quando a integração
+    com uma base de dados real (ou a API do Instagram) for feita, esse
+    objeto STATE é o lugar certo para passar a ler/escrever de lá.
+  */
+  const STORAGE_KEY = "calMariaEduarda_state_v1";
+  let STATE = {};
+  try { STATE = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { STATE = {}; }
+
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); } catch (e) {}
+  }
+  function getPostState(date) {
+    return STATE[date] || { published: false, materialLink: "" };
+  }
+  function setPublished(date, value) {
+    STATE[date] = Object.assign(getPostState(date), { published: value });
+    saveState();
+  }
+  function setMaterialLink(date, url) {
+    STATE[date] = Object.assign(getPostState(date), { materialLink: url });
+    saveState();
+  }
+
   function isoWeekday(y, m, d) {
     const jsDay = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
     return jsDay === 0 ? 7 : jsDay;
   }
 
   const grid = document.getElementById("calGrid");
+  const cellsByDate = {};
+  const dotsByDate = {};
+  let currentModalDate = null;
+
+  const backdrop = document.getElementById("modalBackdrop");
+  const panel = backdrop.querySelector(".modal-panel");
+  const pubSwitch = document.getElementById("pubSwitch");
+  const pubLabel = document.getElementById("pubLabel");
+  const materialInput = document.getElementById("materialInput");
+  const materialSaveBtn = document.getElementById("materialSaveBtn");
+  const materialOpenWrap = document.getElementById("materialOpenWrap");
+  const materialOpenLink = document.getElementById("materialOpenLink");
+
+  function applyPublishedUI(date) {
+    const published = getPostState(date).published;
+    const cell = cellsByDate[date];
+    const dot = dotsByDate[date];
+    if (cell) cell.classList.toggle("is-published", published);
+    if (dot) dot.classList.toggle("published", published);
+    if (currentModalDate === date) {
+      pubSwitch.classList.toggle("on", published);
+      pubSwitch.setAttribute("aria-checked", String(published));
+      pubLabel.textContent = published ? "Publicado" : "Não publicado";
+      pubLabel.classList.toggle("on", published);
+    }
+  }
+
   const year = 2026, month = 8, daysInMonth = 31;
   const firstWeekday = isoWeekday(year, month, 1);
   const leading = firstWeekday - 1;
@@ -909,6 +1010,7 @@ const CALENDAR_DATA = [
     cell.setAttribute("role", "button");
     cell.setAttribute("aria-label", `${entry.weekday} ${dayNum} de agosto — ${entry.title}`);
     cell.innerHTML = `
+      <button class="cal-status-dot" data-date="${entry.date}" aria-label="Marcar ${dayNum}/08 como publicado"></button>
       <span class="cal-daynum">${dayNum}</span>
       <span class="cal-pillar"><span class="dot"></span>${entry.pillarLabel}</span>
       <span class="cal-format">${entry.format}</span>
@@ -916,13 +1018,24 @@ const CALENDAR_DATA = [
     `;
     cell.addEventListener("click", () => openModal(entry, dayNum));
     cell.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(entry, dayNum); } });
+
+    const dot = cell.querySelector(".cal-status-dot");
+    dot.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const nowPublished = !getPostState(entry.date).published;
+      setPublished(entry.date, nowPublished);
+      applyPublishedUI(entry.date);
+    });
+
+    cellsByDate[entry.date] = cell;
+    dotsByDate[entry.date] = dot;
+    applyPublishedUI(entry.date);
+
     grid.appendChild(cell);
   }
 
-  const backdrop = document.getElementById("modalBackdrop");
-  const panel = backdrop.querySelector(".modal-panel");
-
   function openModal(entry, dayNum) {
+    currentModalDate = entry.date;
     document.getElementById("modalDateLabel").textContent = `${entry.weekday}, agosto de 2026`;
     document.getElementById("modalDayNum").textContent = String(dayNum).padStart(2, "0");
     panel.className = "modal-panel p-" + entry.pillar;
@@ -962,15 +1075,50 @@ const CALENDAR_DATA = [
       podcastWrap.style.display = "none";
     }
 
+    const st = getPostState(entry.date);
+    materialInput.value = st.materialLink || "";
+    updateMaterialOpenLink(st.materialLink);
+    applyPublishedUI(entry.date);
+
     backdrop.classList.add("open");
     document.getElementById("modalClose").focus();
   }
 
-  function closeModal() { backdrop.classList.remove("open"); }
+  function updateMaterialOpenLink(url) {
+    if (url) {
+      materialOpenLink.href = url;
+      materialOpenWrap.style.display = "";
+    } else {
+      materialOpenWrap.style.display = "none";
+    }
+  }
+
+  function closeModal() { currentModalDate = null; backdrop.classList.remove("open"); }
 
   document.getElementById("modalClose").addEventListener("click", closeModal);
   backdrop.addEventListener("click", (e) => { if (e.target === backdrop) closeModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+  pubSwitch.addEventListener("click", () => {
+    if (!currentModalDate) return;
+    const nowPublished = !getPostState(currentModalDate).published;
+    setPublished(currentModalDate, nowPublished);
+    applyPublishedUI(currentModalDate);
+  });
+
+  materialSaveBtn.addEventListener("click", () => {
+    if (!currentModalDate) return;
+    const url = materialInput.value.trim();
+    setMaterialLink(currentModalDate, url);
+    updateMaterialOpenLink(url);
+    const original = materialSaveBtn.textContent;
+    materialSaveBtn.textContent = "Salvo!";
+    setTimeout(() => materialSaveBtn.textContent = original, 1200);
+  });
+
+  materialInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); materialSaveBtn.click(); }
+  });
 
   document.getElementById("modalCopyBtn").addEventListener("click", () => {
     const text = document.getElementById("modalLegenda").textContent;
