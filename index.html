@@ -218,6 +218,18 @@
   footer.notes strong { color: var(--ink); font-weight: 600; }
   footer.colophon { margin-top: 28px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-faint); letter-spacing: 0.02em; }
 
+  /* ---------- Ritmo semanal ---------- */
+  section.rhythm { margin-bottom: 44px; }
+  .rhythm h2 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; margin: 0 0 4px; }
+  .rhythm .rhythm-note { font-size: 0.85rem; color: var(--ink-muted); margin: 0 0 16px; max-width: 68ch; }
+  .rhythm-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); overflow-x: auto; }
+  .rhythm-day { background: var(--paper-raised); padding: 12px 10px; min-width: 100px; }
+  .rhythm-day .dow { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 6px; }
+  .rhythm-day .rpillar { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--pillar); margin-bottom: 4px; }
+  .rhythm-day .rpillar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pillar); }
+  .rhythm-day .rlabel { font-size: 0.78rem; color: var(--ink); line-height: 1.3; }
+  @media (max-width: 700px) { .rhythm-grid { grid-template-columns: repeat(7, 130px); } }
+
   @media (max-width: 560px) {
     .card { grid-template-columns: 1fr; }
     .card-date { flex-direction: row; justify-content: flex-start; border-right: none; border-bottom: 1px solid var(--line); padding: 12px 18px; gap: 10px; }
@@ -237,11 +249,12 @@
   <header class="doc-head">
     <p class="eyebrow">Calendário de conteúdo — agosto 2026</p>
     <h1>Maria Eduarda, Nutróloga — pauta baseada em dados reais de audiência</h1>
-    <p class="doc-sub">Podcast semanal (bate-papo, publicado no canal do Fábio Izaias Team) e os cortes derivados dele para YouTube, Shorts, Reels e TikTok. Cada tema foi escolhido por corresponder a um padrão de alto engajamento identificado em 4 canais de nutrição/saúde — dois brasileiros, dois internacionais. Vídeos de referência linkados; roteiros prontos para gravação.</p>
+    <p class="doc-sub">Podcast semanal (bate-papo, publicado no canal do Fábio Izaias Team) e postagens diárias derivadas dele — cortes próprios, reações a outros podcasts/criadores de saúde, e conteúdo de bastidores — para YouTube, Shorts, Reels e TikTok. Cada tema foi escolhido por corresponder a um padrão de alto engajamento identificado em 4 canais de nutrição/saúde — dois brasileiros, dois internacionais. Vídeos de referência linkados; roteiros prontos para gravação.</p>
     <dl class="meta-row">
-      <div><dt>Cliente</dt><dd>Clarissa Maria — Sabia Adm.</dd></div>
-      <div><dt>Cadência</dt><dd>Podcast 1×/semana · cortes 2×/semana</dd></div>
-      <div><dt>Período</dt><dd>04 a 31 de agosto</dd></div>
+      <div><dt>Cliente</dt><dd>Dra. Maria Eduarda</dd></div>
+      <div><dt>Gestão</dt><dd>Clarissa Maria — Sabia Adm.</dd></div>
+      <div><dt>Cadência</dt><dd>Podcast 1×/semana · postagem todos os dias</dd></div>
+      <div><dt>Período</dt><dd>03 a 31 de agosto</dd></div>
       <div><dt>Fonte dos dados</dt><dd>Supermetrics · YouTube Public Data</dd></div>
     </dl>
   </header>
@@ -282,8 +295,22 @@
     </div>
   </div>
 
+  <section class="rhythm">
+    <h2>Ritmo semanal</h2>
+    <p class="rhythm-note">Podcast gravado 1×/semana; todo o resto do mês é derivado dele ou de reações a outros podcasts/criadores de saúde. Esse padrão se repete toda semana do mês.</p>
+    <div class="rhythm-grid">
+      <div class="rhythm-day" style="--pillar: var(--pillar-meds)"><p class="dow">Segunda</p><p class="rpillar"><span class="dot"></span>Corte próprio</p><p class="rlabel">Corte do podcast da semana — parte 1</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-reagindo)"><p class="dow">Terça</p><p class="rpillar"><span class="dot"></span>Reagindo</p><p class="rlabel">Reação a outro podcast/criador de saúde</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-mito)"><p class="dow">Quarta</p><p class="rpillar"><span class="dot"></span>Mito/verdade</p><p class="rlabel">Mito ou verdade sobre alimento/hábito popular</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-educativo)"><p class="dow">Quinta</p><p class="rpillar"><span class="dot"></span>Corte próprio</p><p class="rlabel">Corte do podcast da semana — parte 2</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-reagindo)"><p class="dow">Sexta</p><p class="rpillar"><span class="dot"></span>Reagindo</p><p class="rlabel">Reação a conteúdo viral/outro podcast</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-autoridade)"><p class="dow">Sábado</p><p class="rpillar"><span class="dot"></span>Bastidores</p><p class="rlabel">Rotina/consultório da Dra. Maria Eduarda</p></div>
+      <div class="rhythm-day" style="--pillar: var(--pillar-autoridade)"><p class="dow">Domingo</p><p class="rpillar"><span class="dot"></span>Recap</p><p class="rlabel">Resumo da semana + pergunta do público</p></div>
+    </div>
+  </section>
+
   <div class="sourcing-note">
-    <strong>Sobre os posts "Reagindo" (11/08 e 18/08):</strong> conteúdo de reação depende do que está viralizando naquela semana — por isso não há um vídeo-alvo fixo definido com um mês de antecedência. Na semana da gravação, procure por: <span class="terms">"o que como no dia" + influencer fitness BR</span>, <span class="terms">dieta viral tiktok brasil</span>, <span class="terms">emagrecimento remédio caseiro viral</span>. Os vídeos linkados nesses cards são a referência de <em>formato</em> (como estruturar a reação), não o alvo da reação.
+    <strong>Sobre os posts "Reagindo" (toda terça e sexta):</strong> conteúdo de reação depende do que está viralizando naquela semana — por isso não há vídeo-alvo fixo definido com um mês de antecedência. Na semana da gravação, procure por: <span class="terms">"o que como no dia" + influencer fitness BR</span>, <span class="terms">dieta viral tiktok brasil</span>, <span class="terms">outro podcast de nutrição/saúde BR</span>, <span class="terms">suplemento/detox anunciado nas redes</span>. Os vídeos linkados nos cards de referência abaixo mostram o <em>formato</em> (como estruturar a reação), não o alvo da reação daquele dia específico.
   </div>
 
   <!-- WEEK 1 -->
@@ -292,9 +319,7 @@
     <div class="cards">
 
       <div class="podcast-card">
-        <div class="podcast-topline">
-          <span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 05/08</span>
-        </div>
+        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar no fim de semana anterior</span></div>
         <h3>Ep. 1 — Emagrecedores em pauta: Ozempic, Mounjaro e Tirzepatida</h3>
         <p class="field-label">Roteiro / pauta da conversa</p>
         <ol class="roteiro-list">
@@ -304,16 +329,16 @@
           <li>Efeitos colaterais e riscos do uso sem acompanhamento (mercado paralelo, dose errada)</li>
           <li>Mito a derrubar: "é bala mágica" — sem mudança de hábito o efeito não se sustenta</li>
           <li>Bate-papo Fábio (treino) × Maria Eduarda (nutrologia): como o exercício se encaixa em quem usa a medicação</li>
-          <li>Fechamento: recomendação prática + gancho para o corte de 07/08</li>
+          <li>Fechamento: gancho para os cortes da semana</li>
         </ol>
       </div>
 
       <article class="card" style="--pillar: var(--pillar-meds)">
-        <div class="card-date"><span class="daynum">07</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-date"><span class="daynum">03</span><span class="monthday">AGO</span><span class="weekday">Segunda</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Medicamentos para emagrecer</span>
-            <span class="format-tag">Corte do Ep. 1 · 8–12 min</span>
+            <span class="format-tag">Corte do Ep. 1 — parte 1</span>
           </div>
           <h3>Ozempic, Mounjaro e Tirzepatida: o que a ciência realmente diz</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -345,41 +370,20 @@
         </div>
       </article>
 
-    </div>
-  </div>
-
-  <!-- WEEK 2 -->
-  <div class="week">
-    <p class="week-label">Semana de 10 a 16 de agosto</p>
-    <div class="cards">
-
-      <div class="podcast-card">
-        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 08/08</span></div>
-        <h3>Ep. 2 — Reagindo: o que a internet fala sobre emagrecimento</h3>
-        <p class="field-label">Roteiro / pauta da conversa</p>
-        <ol class="roteiro-list">
-          <li>Reação ao vivo a 1 vídeo de "o que como no dia" de influencer fitness BR (escolher na semana — ver nota de sourcing acima)</li>
-          <li>Análise item a item: o que está certo cientificamente, o que é exagero ou mito</li>
-          <li>Mito ou verdade relâmpago: água morna, vinagre de maçã, chá detox</li>
-          <li>Perguntas do público (comentários/chat ao vivo)</li>
-          <li>Fechamento: gancho para os dois cortes da semana (11/08 e 14/08)</li>
-        </ol>
-      </div>
-
       <article class="card" style="--pillar: var(--pillar-reagindo)">
-        <div class="card-date"><span class="daynum">11</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-date"><span class="daynum">04</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
-            <span class="format-tag">Corte do Ep. 2 · formato reação</span>
+            <span class="format-tag">Reação a outro podcast de saúde</span>
           </div>
-          <h3>Nutróloga reage ao que influencers fitness comem em 1 dia</h3>
+          <h3>Nutróloga reage a um trecho de outro podcast de nutrição/saúde</h3>
           <p class="field-label">Roteiro do corte</p>
           <ol class="roteiro-list">
-            <li>Mostrar a refeição do influencer na tela</li>
-            <li>Reação rápida com selo "aprovado / reprovado"</li>
-            <li>1 frase de contexto: por que isso funciona (ou não) para o corpo dessa pessoa especificamente</li>
-            <li>Fechamento: "manda o print do influencer que você quer que eu reaja"</li>
+            <li>Tocar o trecho (áudio/vídeo) do outro podcast na tela</li>
+            <li>Reação imediata: concorda, discorda ou complementa?</li>
+            <li>Base científica em 1-2 frases</li>
+            <li>Fechamento: "manda o corte de podcast que você quer que eu reaja"</li>
           </ol>
           <div class="benchmarks">
             <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
@@ -388,21 +392,16 @@
               <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=tCdsALK145E" target="_blank" rel="noopener">A Realistic What I Eat in a Day as a Dietitian</a> <span class="channel">— Abbey Sharp</span></span><span class="bm-views">3.278.168</span></span>
               <span class="track"><span class="fill" style="width:78%; --bar-color:var(--accent-intl)"></span></span>
             </div>
-            <div class="bm-row">
-              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
-              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=ax5YELyHuJw" target="_blank" rel="noopener">Dietitian Reacts to Gwyneth Paltrow's Diet</a> <span class="channel">— Abbey Sharp</span></span><span class="bm-views">3.409.338</span></span>
-              <span class="track"><span class="fill" style="width:79%; --bar-color:var(--accent-intl)"></span></span>
-            </div>
           </div>
         </div>
       </article>
 
       <article class="card" style="--pillar: var(--pillar-mito)">
-        <div class="card-date"><span class="daynum">14</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-date"><span class="daynum">05</span><span class="monthday">AGO</span><span class="weekday">Quarta</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Mito ou verdade</span>
-            <span class="format-tag">Corte do Ep. 2</span>
+            <span class="format-tag">Corte do Ep. 1</span>
           </div>
           <h3>Mito ou verdade: água morna, vinagre de maçã e chá emagrecem?</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -433,32 +432,38 @@
         </div>
       </article>
 
-    </div>
-  </div>
-
-  <!-- WEEK 3 -->
-  <div class="week">
-    <p class="week-label">Semana de 17 a 23 de agosto</p>
-    <div class="cards">
-
-      <div class="podcast-card">
-        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 15/08</span></div>
-        <h3>Ep. 3 — TikTok, dietas malucas e o que realmente emagrece</h3>
-        <p class="field-label">Roteiro / pauta da conversa</p>
-        <ol class="roteiro-list">
-          <li>Reação a 1-2 dietas virais da semana no TikTok (escolher na semana — ver nota de sourcing acima)</li>
-          <li>Debate Fábio (treino) × Maria Eduarda (nutrologia): dieta vs exercício, o que pesa mais</li>
-          <li>Case real de paciente (anonimizado) com resultado combinando dieta + treino</li>
-          <li>Fechamento: gancho para os dois cortes da semana (18/08 e 21/08)</li>
-        </ol>
-      </div>
+      <article class="card" style="--pillar: var(--pillar-meds)">
+        <div class="card-date"><span class="daynum">06</span><span class="monthday">AGO</span><span class="weekday">Quinta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Medicamentos para emagrecer</span>
+            <span class="format-tag">Corte do Ep. 1 — parte 2</span>
+          </div>
+          <h3>O erro nº1 de quem usa caneta emagrecedora sem orientação</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Hook: "isso pode acontecer se você usar Ozempic sem acompanhamento"</li>
+            <li>Riscos reais: perda de massa muscular, efeito rebote, mercado paralelo</li>
+            <li>O que fazer diferente: acompanhamento médico + mudança de hábito junto</li>
+            <li>Fechamento: "salve esse vídeo antes de procurar a caneta emagrecedora"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Vídeos de referência (mesmas do corte de segunda)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=kNcCtmP8Z3I" target="_blank" rel="noopener">O uso de remédios para emagrecer</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">121.581</span></span>
+              <span class="track"><span class="fill" style="width:41.7%; --bar-color:var(--accent-br)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article class="card" style="--pillar: var(--pillar-reagindo)">
-        <div class="card-date"><span class="daynum">18</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-date"><span class="daynum">07</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
-            <span class="format-tag">Corte do Ep. 3 · formato reação</span>
+            <span class="format-tag">Reação a dieta viral do TikTok</span>
           </div>
           <h3>Nutróloga reage às dietas malucas que viralizam no TikTok</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -475,21 +480,71 @@
               <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=BLK6dV76XTQ" target="_blank" rel="noopener">TikToks Your Doctor Warned You About</a> <span class="channel">— Doctor Mike</span></span><span class="bm-views">16.643.882</span></span>
               <span class="track"><span class="fill" style="width:97.9%; --bar-color:var(--accent-intl)"></span></span>
             </div>
-            <div class="bm-row">
-              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
-              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=ep8ZMq3GLNA" target="_blank" rel="noopener">Doctor Fact-Checks TikTok Nutrition Advice</a> <span class="channel">— Doctor Mike</span></span><span class="bm-views">14.346.249</span></span>
-              <span class="track"><span class="fill" style="width:96.2%; --bar-color:var(--accent-intl)"></span></span>
-            </div>
           </div>
         </div>
       </article>
 
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">08</span><span class="monthday">AGO</span><span class="weekday">Sábado</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Bastidores</span>
+            <span class="format-tag">Sem benchmark externo — formato de conexão</span>
+          </div>
+          <h3>Um dia de consulta com a Dra. Maria Eduarda</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Bastidor do consultório: chegada, preparação, primeira paciente do dia (com autorização)</li>
+            <li>1 frase sobre o que ela mais escuta de pacientes que querem emagrecer</li>
+            <li>Fechamento: "comenta se você já passou por uma consulta assim"</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">09</span><span class="monthday">AGO</span><span class="weekday">Domingo</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Recap</span>
+            <span class="format-tag">Sem benchmark externo — formato de engajamento</span>
+          </div>
+          <h3>Recap da semana: o que aprendemos sobre canetas emagrecedoras</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Resumo rápido dos 3 pontos mais importantes da semana</li>
+            <li>Responder 1 pergunta real deixada nos comentários</li>
+            <li>Fechamento: "manda sua pergunta pra semana que vem"</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week">
+    <p class="week-label">Semana de 10 a 16 de agosto</p>
+    <div class="cards">
+
+      <div class="podcast-card">
+        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 08/08</span></div>
+        <h3>Ep. 2 — Dieta vs exercício e o caminho para perder peso de verdade</h3>
+        <p class="field-label">Roteiro / pauta da conversa</p>
+        <ol class="roteiro-list">
+          <li>O que emagrece mais: dieta ou exercício — o debate Fábio (treino) × Maria Eduarda (nutrologia)</li>
+          <li>Sarcopenia: o risco de emagrecer rápido demais e perder músculo</li>
+          <li>Mito ou verdade relâmpago: leite de vaca faz mal?</li>
+          <li>Case real de paciente (anonimizado) combinando dieta + treino</li>
+          <li>Fechamento: gancho para os cortes da semana</li>
+        </ol>
+      </div>
+
       <article class="card" style="--pillar: var(--pillar-educativo)">
-        <div class="card-date"><span class="daynum">21</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-date"><span class="daynum">10</span><span class="monthday">AGO</span><span class="weekday">Segunda</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Educativo</span>
-            <span class="format-tag">Corte do Ep. 3 · 8–12 min</span>
+            <span class="format-tag">Corte do Ep. 2 — parte 1</span>
           </div>
           <h3>O que emagrece mais: dieta ou exercício?</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -506,38 +561,69 @@
               <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=kR8mWo1ExRY" target="_blank" rel="noopener">O que é Melhor para Perder Peso: a Dieta ou Exercício?</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">123.187</span></span>
               <span class="track"><span class="fill" style="width:41.8%; --bar-color:var(--accent-br)"></span></span>
             </div>
-            <p class="no-ref">Sem equivalente direto encontrado nos canais internacionais analisados.</p>
+            <p class="no-ref">Vídeo mais visto de todo o benchmark BR analisado — sem equivalente direto encontrado nos canais internacionais.</p>
           </div>
         </div>
       </article>
 
-    </div>
-  </div>
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">11</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a suplemento "milagroso"</span>
+          </div>
+          <h3>Nutróloga reage a suplemento anunciado como "milagroso" nas redes</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar o anúncio/vídeo do suplemento na tela</li>
+            <li>Checar a promessa contra a evidência científica disponível</li>
+            <li>Veredito: vale a pena ou é só marketing?</li>
+            <li>Fechamento: "manda o suplemento que você quer que eu analise"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=tDESIn2FGUQ" target="_blank" rel="noopener">THEY LIED. Unpopular nutrition truths</a> <span class="channel">— Abbey Sharp</span></span><span class="bm-views">1.195.901</span></span>
+              <span class="track"><span class="fill" style="width:67.8%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
 
-  <!-- WEEK 4 -->
-  <div class="week">
-    <p class="week-label">Semana de 24 a 30 de agosto</p>
-    <div class="cards">
-
-      <div class="podcast-card">
-        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 22/08</span></div>
-        <h3>Ep. 4 — Emagrecer sem perder músculo</h3>
-        <p class="field-label">Roteiro / pauta da conversa</p>
-        <ol class="roteiro-list">
-          <li>O que é sarcopenia e por que emagrecimento rápido demais causa perda de músculo</li>
-          <li>Sinais de alerta: fraqueza, flacidez, cansaço</li>
-          <li>3 mitos da indústria fitness: suplemento que "emagrece sozinho", jejum longo obrigatório, "detox" que limpa o corpo</li>
-          <li>Fábio dá a visão do treino de força durante o emagrecimento; Maria Eduarda dá a visão nutricional (proteína adequada)</li>
-          <li>Fechamento: gancho para os dois cortes da semana (25/08 e 28/08)</li>
-        </ol>
-      </div>
+      <article class="card" style="--pillar: var(--pillar-mito)">
+        <div class="card-date"><span class="daynum">12</span><span class="monthday">AGO</span><span class="weekday">Quarta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Mito ou verdade</span>
+            <span class="format-tag">Corte do Ep. 2</span>
+          </div>
+          <h3>Mito ou verdade: leite de vaca faz mal?</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Pergunta direta na tela: "leite de vaca faz mal?"</li>
+            <li>Selo "mito" ou "verdade" + explicação científica em 1-2 frases</li>
+            <li>Contexto: quando faz sentido evitar (intolerância) vs mito geral</li>
+            <li>CTA: "marque quem ainda acredita nesse mito"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Vídeo de referência</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=SW1IaCOkz34" target="_blank" rel="noopener">MITO OU VERDADE: Leite de vaca faz mal?</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">24.548</span></span>
+              <span class="track"><span class="fill" style="width:23.4%; --bar-color:var(--accent-br)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article class="card" style="--pillar: var(--pillar-educativo)">
-        <div class="card-date"><span class="daynum">25</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-date"><span class="daynum">13</span><span class="monthday">AGO</span><span class="weekday">Quinta</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Educativo</span>
-            <span class="format-tag">Corte do Ep. 4 · 8–12 min</span>
+            <span class="format-tag">Corte do Ep. 2 — parte 2</span>
           </div>
           <h3>O erro que faz você emagrecer e perder músculo (sarcopenia)</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -564,12 +650,92 @@
         </div>
       </article>
 
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">14</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a "detox"/chá emagrecedor</span>
+          </div>
+          <h3>Nutróloga reage a chá/detox vendido como emagrecedor nas redes</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar o anúncio do produto na tela</li>
+            <li>O que a ciência realmente diz sobre "detox"</li>
+            <li>Risco de depender disso em vez de mudar hábito</li>
+            <li>Fechamento: "manda o produto que você quer que eu analise"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=ep8ZMq3GLNA" target="_blank" rel="noopener">Doctor Fact-Checks TikTok Nutrition Advice</a> <span class="channel">— Doctor Mike</span></span><span class="bm-views">14.346.249</span></span>
+              <span class="track"><span class="fill" style="width:96.2%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">15</span><span class="monthday">AGO</span><span class="weekday">Sábado</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Bastidores</span>
+            <span class="format-tag">Sem benchmark externo — formato de conexão</span>
+          </div>
+          <h3>Bastidores da gravação do podcast com o Fábio</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Bastidor: chegada ao estúdio, preparação, clima de gravação</li>
+            <li>1 momento de descontração entre Maria Eduarda e Fábio</li>
+            <li>Fechamento: "assista o episódio completo — link na bio"</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">16</span><span class="monthday">AGO</span><span class="weekday">Domingo</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Recap</span>
+            <span class="format-tag">Sem benchmark externo — formato de engajamento</span>
+          </div>
+          <h3>Recap da semana: dieta, exercício e sarcopenia</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Resumo rápido dos 3 pontos mais importantes da semana</li>
+            <li>Responder 1 pergunta real deixada nos comentários</li>
+            <li>Fechamento: "manda sua pergunta pra semana que vem"</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week">
+    <p class="week-label">Semana de 17 a 23 de agosto</p>
+    <div class="cards">
+
+      <div class="podcast-card">
+        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 15/08</span></div>
+        <h3>Ep. 3 — Mitos da indústria fitness e qual profissional procurar</h3>
+        <p class="field-label">Roteiro / pauta da conversa</p>
+        <ol class="roteiro-list">
+          <li>3 mentiras que a indústria fitness vende: suplemento milagroso, jejum longo obrigatório, "detox" que limpa o corpo</li>
+          <li>Diferença entre nutrólogo, nutricionista e endocrinologista — quando procurar cada um</li>
+          <li>Mito ou verdade do episódio (tema a confirmar com o que estiver em alta na semana)</li>
+          <li>Fechamento: gancho para os cortes da semana</li>
+        </ol>
+      </div>
+
       <article class="card" style="--pillar: var(--pillar-mito)">
-        <div class="card-date"><span class="daynum">28</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-date"><span class="daynum">17</span><span class="monthday">AGO</span><span class="weekday">Segunda</span></div>
         <div class="card-body">
           <div class="card-topline">
             <span class="pillar-tag"><span class="dot"></span>Mito ou verdade</span>
-            <span class="format-tag">Corte do Ep. 4</span>
+            <span class="format-tag">Corte do Ep. 3 — parte 1</span>
           </div>
           <h3>3 mentiras sobre emagrecimento que influenciador nenhum vai te contar</h3>
           <p class="field-label">Roteiro do corte</p>
@@ -592,6 +758,311 @@
               <span class="track"><span class="fill" style="width:67.8%; --bar-color:var(--accent-intl)"></span></span>
             </div>
           </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">18</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a comentário polêmico de outro criador</span>
+          </div>
+          <h3>Nutróloga reage a comentário polêmico sobre emagrecimento</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar o print/vídeo do comentário polêmico</li>
+            <li>Reação direta: por que isso é (ou não) problemático</li>
+            <li>O que a ciência diz de verdade sobre o tema</li>
+            <li>Fechamento: "concorda ou discorda? comenta aí"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=ax5YELyHuJw" target="_blank" rel="noopener">Dietitian Reacts to Gwyneth Paltrow's Diet</a> <span class="channel">— Abbey Sharp</span></span><span class="bm-views">3.409.338</span></span>
+              <span class="track"><span class="fill" style="width:79%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-mito)">
+        <div class="card-date"><span class="daynum">19</span><span class="monthday">AGO</span><span class="weekday">Quarta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Mito ou verdade</span>
+            <span class="format-tag">Corte do Ep. 3</span>
+          </div>
+          <h3>Mito ou verdade: tema da semana (a confirmar)</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Escolher 1 crença popular em alta naquela semana sobre alimentação/emagrecimento</li>
+            <li>Selo "mito" ou "verdade" + explicação científica em 1-2 frases</li>
+            <li>CTA: "marque quem ainda acredita nesse mito"</li>
+          </ol>
+          <p class="no-ref">Roteiro pronto — referência real de benchmark ainda não levantada para esta semana específica (ver Achado 03 da pesquisa: formato historicamente forte no Brasil). A rotina semanal de pesquisa deve confirmar um vídeo de referência real antes da gravação.</p>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">20</span><span class="monthday">AGO</span><span class="weekday">Quinta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Autoridade</span>
+            <span class="format-tag">Corte do Ep. 3 — parte 2</span>
+          </div>
+          <h3>Emagrecer com segurança: qual profissional procurar</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Hook: "você está indo no profissional errado para emagrecer"</li>
+            <li>Diferença rápida: nutrólogo x nutricionista x endocrinologista</li>
+            <li>Fechamento: "marque quem precisa saber disso antes de começar uma dieta"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Vídeo de referência</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=kyjZzUYKB1c" target="_blank" rel="noopener">Nutrólogo ou Endócrino — Quem procurar para perda de peso?</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">4.054</span></span>
+              <span class="track"><span class="fill" style="width:6%; --bar-color:var(--accent-br)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">21</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a antes/depois suspeito</span>
+          </div>
+          <h3>Nutróloga reage a antes/depois de emagrecimento suspeito nas redes</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar o antes/depois viral na tela</li>
+            <li>O que é fisiologicamente possível vs o que é edição/luz/pose</li>
+            <li>Alerta sobre expectativa irreal</li>
+            <li>Fechamento: "manda o antes/depois que você quer que eu analise"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=BLK6dV76XTQ" target="_blank" rel="noopener">TikToks Your Doctor Warned You About</a> <span class="channel">— Doctor Mike</span></span><span class="bm-views">16.643.882</span></span>
+              <span class="track"><span class="fill" style="width:97.9%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">22</span><span class="monthday">AGO</span><span class="weekday">Sábado</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Bastidores</span>
+            <span class="format-tag">Sem benchmark externo — formato de conexão</span>
+          </div>
+          <h3>O que a Dra. Maria Eduarda come no dia dela</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar as refeições do dia dela, de forma simples e realista (não prescritiva)</li>
+            <li>1 frase deixando claro que isso é o que funciona pra ela, não uma dieta genérica</li>
+            <li>Fechamento: "isso não é prescrição — cada corpo é um corpo, procure orientação individual"</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">23</span><span class="monthday">AGO</span><span class="weekday">Domingo</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Recap</span>
+            <span class="format-tag">Sem benchmark externo — formato de engajamento</span>
+          </div>
+          <h3>Recap da semana: mitos da indústria fitness</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Resumo rápido dos 3 pontos mais importantes da semana</li>
+            <li>Responder 1 pergunta real deixada nos comentários</li>
+            <li>Fechamento: "manda sua pergunta pra semana que vem"</li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week">
+    <p class="week-label">Semana de 24 a 30 de agosto</p>
+    <div class="cards">
+
+      <div class="podcast-card">
+        <div class="podcast-topline"><span class="podcast-tag"><span class="dot"></span>Podcast · gravar até 22/08</span></div>
+        <h3>Ep. 4 — Novidades em medicamentos para emagrecer: Tirzepatida e Retatrutida</h3>
+        <p class="field-label">Roteiro / pauta da conversa</p>
+        <ol class="roteiro-list">
+          <li>O que mudou: novas medicações (Tirzepatida, Retatrutida) e o que a ciência já sabe sobre elas</li>
+          <li>Diferença entre essas e o Ozempic — vale a pena esperar por elas?</li>
+          <li>Mito ou verdade do episódio (tema a confirmar com o que estiver em alta na semana)</li>
+          <li>Fechamento: gancho para os cortes da semana</li>
+        </ol>
+      </div>
+
+      <article class="card" style="--pillar: var(--pillar-meds)">
+        <div class="card-date"><span class="daynum">24</span><span class="monthday">AGO</span><span class="weekday">Segunda</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Medicamentos para emagrecer</span>
+            <span class="format-tag">Corte do Ep. 4 — parte 1</span>
+          </div>
+          <h3>Retatrutida: a nova caneta emagrecedora, explicada</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Hook: "tem um remédio novo mais forte que o Ozempic — veja o que se sabe até agora"</li>
+            <li>O que é a Retatrutida e como se diferencia das anteriores</li>
+            <li>O que ainda não se sabe (é recente, poucos estudos de longo prazo)</li>
+            <li>Fechamento: "comente se já ouviu falar da Retatrutida"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Vídeo de referência</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=9RWiPDMvApE" target="_blank" rel="noopener">Retatrutida: nova caneta emagrecedora</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">31.577</span></span>
+              <span class="track"><span class="fill" style="width:26.4%; --bar-color:var(--accent-br)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">25</span><span class="monthday">AGO</span><span class="weekday">Terça</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a outro podcast de saúde</span>
+          </div>
+          <h3>Nutróloga reage a informação duvidosa de outro podcast</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Tocar o trecho do outro podcast na tela</li>
+            <li>Apontar o que está errado ou incompleto</li>
+            <li>Dar a versão correta com base científica</li>
+            <li>Fechamento: "manda o corte de podcast que você quer que eu reaja"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=NqZFBh0iZpM" target="_blank" rel="noopener">Long-Term Ozempic Use (the shocking truth)</a> <span class="channel">— Abbey Sharp</span></span><span class="bm-views">1.282.547</span></span>
+              <span class="track"><span class="fill" style="width:68.6%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-mito)">
+        <div class="card-date"><span class="daynum">26</span><span class="monthday">AGO</span><span class="weekday">Quarta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Mito ou verdade</span>
+            <span class="format-tag">Corte do Ep. 4</span>
+          </div>
+          <h3>Mito ou verdade: tema da semana (a confirmar)</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Escolher 1 crença popular em alta naquela semana sobre alimentação/emagrecimento</li>
+            <li>Selo "mito" ou "verdade" + explicação científica em 1-2 frases</li>
+            <li>CTA: "marque quem ainda acredita nesse mito"</li>
+          </ol>
+          <p class="no-ref">Roteiro pronto — referência real de benchmark ainda não levantada para esta semana específica. A rotina semanal de pesquisa deve confirmar um vídeo de referência real antes da gravação.</p>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-meds)">
+        <div class="card-date"><span class="daynum">27</span><span class="monthday">AGO</span><span class="weekday">Quinta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Medicamentos para emagrecer</span>
+            <span class="format-tag">Corte do Ep. 4 — parte 2</span>
+          </div>
+          <h3>Tirzepatida no tratamento da obesidade: o que diz a ciência?</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Hook: "essa é a diferença entre Tirzepatida e Ozempic que ninguém te conta"</li>
+            <li>Mecanismo de ação em linguagem simples</li>
+            <li>Para quem é indicada de fato</li>
+            <li>Fechamento: "comente sua dúvida sobre Tirzepatida"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Vídeo de referência</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=1HxaxgJ6HdY" target="_blank" rel="noopener">Tirzepatida no tratamento da obesidade: o que diz a ciência?</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">32.251</span></span>
+              <span class="track"><span class="fill" style="width:26.5%; --bar-color:var(--accent-br)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-reagindo)">
+        <div class="card-date"><span class="daynum">28</span><span class="monthday">AGO</span><span class="weekday">Sexta</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Reagindo</span>
+            <span class="format-tag">Reação a promessa de emagrecimento rápido</span>
+          </div>
+          <h3>Nutróloga reage a promessa de "emagrecer em 7 dias"</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Mostrar o anúncio/promessa na tela</li>
+            <li>Por que isso é fisiologicamente improvável ou perigoso</li>
+            <li>O que é realista esperar em 7 dias de verdade</li>
+            <li>Fechamento: "manda a promessa milagrosa que você quer que eu analise"</li>
+          </ol>
+          <div class="benchmarks">
+            <p class="bm-label">Referência de formato (não é o alvo da reação — ver nota acima)</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-intl)">IN</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=MM0izZyghxs" target="_blank" rel="noopener">Ozempic For A Little Weight Loss?</a> <span class="channel">— Doctor Mike</span></span><span class="bm-views">16.674.341</span></span>
+              <span class="track"><span class="fill" style="width:97.9%; --bar-color:var(--accent-intl)"></span></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">29</span><span class="monthday">AGO</span><span class="weekday">Sábado</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Bastidores</span>
+            <span class="format-tag">Sem benchmark externo — formato de conexão</span>
+          </div>
+          <h3>Como a Dra. Maria Eduarda avalia um paciente novo</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Bastidor: o que ela pergunta e observa numa primeira consulta</li>
+            <li>1 frase sobre por que não existe protocolo genérico pra todo mundo</li>
+            <li>Fechamento: "comenta se você já passou por uma primeira consulta assim"</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card" style="--pillar: var(--pillar-autoridade)">
+        <div class="card-date"><span class="daynum">30</span><span class="monthday">AGO</span><span class="weekday">Domingo</span></div>
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="pillar-tag"><span class="dot"></span>Recap</span>
+            <span class="format-tag">Sem benchmark externo — formato de engajamento</span>
+          </div>
+          <h3>Recap da semana: Tirzepatida, Retatrutida e o que vem por aí</h3>
+          <p class="field-label">Roteiro do corte</p>
+          <ol class="roteiro-list">
+            <li>Resumo rápido dos 3 pontos mais importantes da semana</li>
+            <li>Responder 1 pergunta real deixada nos comentários</li>
+            <li>Fechamento: "amanhã fechamos o mês com um Q&amp;A ao vivo — manda sua pergunta"</li>
+          </ol>
         </div>
       </article>
 
@@ -631,13 +1102,17 @@
             <li>Fechamento: "manda sua pergunta para o próximo mês de conteúdo"</li>
           </ol>
           <div class="benchmarks">
-            <p class="bm-label">Vídeo de referência</p>
+            <p class="bm-label">Vídeos de referência</p>
             <div class="bm-row">
               <span class="src-mark" style="background:var(--accent-br)">BR</span>
               <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=kyjZzUYKB1c" target="_blank" rel="noopener">Nutrólogo ou Endócrino — Quem procurar para perda de peso?</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">4.054</span></span>
               <span class="track"><span class="fill" style="width:6%; --bar-color:var(--accent-br)"></span></span>
             </div>
-            <p class="no-ref">Sem equivalente direto encontrado nos canais internacionais analisados.</p>
+            <div class="bm-row">
+              <span class="src-mark" style="background:var(--accent-br)">BR</span>
+              <span class="bm-text"><span class="bm-title"><a href="https://www.youtube.com/watch?v=vNCDnVoRgRo" target="_blank" rel="noopener">Respondendo perguntas sobre emagrecimento</a> <span class="channel">— Dra. Andrea Pereira</span></span><span class="bm-views">4.798</span></span>
+              <span class="track"><span class="fill" style="width:6%; --bar-color:var(--accent-br)"></span></span>
+            </div>
           </div>
         </div>
       </article>
@@ -649,8 +1124,9 @@
     <h2>Notas da pesquisa</h2>
     <ol>
       <li><strong>Canal próprio ainda não localizado.</strong> O canal do YouTube da Maria Eduarda / Fábio Izaias Team não foi encontrado pelo conector de dados nem por busca — este calendário não inclui baseline própria dela. Assim que o link correto for confirmado, o calendário pode ser reprocessado com esses números.</li>
-      <li><strong>Vídeos "Reagindo" (11/08 e 18/08).</strong> Os links nesses dois cards mostram vídeos de <em>formato</em> equivalente — não são o alvo da reação, que deve ser escolhido na semana da gravação (ver caixa de sourcing acima).</li>
-      <li><strong>Fluxo de publicação.</strong> Podcast completo no canal do Fábio às segundas/terças; cortes derivados no YouTube às terças e sextas; no mesmo dia, distribuir o corte em Shorts, Reels e TikTok com o gancho adaptado ao formato vertical.</li>
+      <li><strong>Vídeos "Reagindo" (toda terça e sexta).</strong> Os links nesses cards mostram vídeos de <em>formato</em> equivalente — não são o alvo da reação, que deve ser escolhido na semana da gravação (ver caixa de sourcing acima).</li>
+      <li><strong>Dias "Mito ou verdade" de 19/08 e 26/08.</strong> Roteiro genérico pronto, mas ainda sem referência de benchmark real levantada para o tema específico daquela semana — precisa ser confirmado antes da gravação (não inventamos números).</li>
+      <li><strong>Fluxo de publicação.</strong> Podcast completo no canal do Fábio 1×/semana; a partir dele, um corte todos os dias (segunda a domingo) distribuído em YouTube, Shorts, Reels e TikTok, com o gancho adaptado ao formato vertical.</li>
       <li><strong>Metodologia.</strong> Dados extraídos via Supermetrics (YouTube Public Data) com Channel ID verificado. Barras de comparação usam escala logarítmica — leitura relativa de alcance, não proporção literal entre os números.</li>
     </ol>
     <p class="colophon">Elevate · calendário gerado a partir de dados públicos do YouTube · agosto 2026</p>
